@@ -3,15 +3,17 @@ console.log("Script started");
 function start() {
     console.log("click");
     console.log(Math.random() * 100);
-    createCircle();
+    setTimeout(createCircle, 1500, 1);
+    setTimeout(createCircle, 2000, 2);
+    setTimeout(createCircle, 2500, 3);
 }
 
-function createCircle() {
+function createCircle(num) {
     // Create a div for the circle
     let circle = document.createElement("div");
 
     // Set some text and styles
-    circle.innerText = "6767";
+    circle.innerText = num;
     circle.style.width = "100px";
     circle.style.height = "100px";
     circle.style.backgroundColor = "navy";
@@ -27,14 +29,25 @@ function createCircle() {
 
     // Add to the page
     document.body.appendChild(circle);
+
+    // Make it clickable
+    circle.addEventListener("click", checkForRemove);
+
 }
 
 function getRandomX() {
-    let randX = Math.random() * window.innerWidth - 100;
+    let randX = Math.random() * window.innerWidth - 125;
     return randX;
 }
 
 function getRandomY() {
-    let randY = Math.random() * window.innerHeight - 100;
+    let randY = Math.random() * window.innerHeight - 125;
     return randY;
 }
+
+// Checks for the right choice and removes it
+function checkForRemove(event) {
+    let circle = event.target;
+    console.log(circle.innerText);
+    
+    }
